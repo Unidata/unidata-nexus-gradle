@@ -24,4 +24,4 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Build and test with Gradle
-        run: ./gradlew --info --stacktrace test
+        run: chmod u+x gradlew && ./gradlew --info --stacktrace test
