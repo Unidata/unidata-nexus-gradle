@@ -30,8 +30,8 @@ dependencies {
   implementation localGroovy()
   implementation 'io.github.http-builder-ng:http-builder-ng-okhttp:1.0.3'
 
-  testImplementation 'org.slf4j:slf4j-api:1.7.28'
-  testRuntimeOnly 'ch.qos.logback:logback-classic:1.2.3'
+  testImplementation 'org.slf4j:slf4j-api:1.7.32'
+  testRuntimeOnly 'ch.qos.logback:logback-classic:1.2.8'
 
   // We need to make sure the version of spock is compatible with the version of groovy being used by the plugin
   // project. If the version of groovy changes (because we update gradle), we should make sure to find a spock
