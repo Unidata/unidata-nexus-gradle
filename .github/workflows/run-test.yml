@@ -4,24 +4,27 @@ on: [pull_request]
 
 jobs:
   tests-zulu:
-    name: unidata-nexus-gradle plugin tests (Zulu JDK)
+    name: unidata-nexus-gradle plugin tests (Temurin JDK)
     runs-on: ubuntu-latest
     strategy:
       matrix:
         # test against latest 8, 11 LTS versions
         java: [ 8, 11 ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup java ${{ matrix.java }}
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: 'temurin'
           java-version: ${{ matrix.java }}
-          architecture: x64
       - name: Cache Gradle packages
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Build and test with Gradle
         run: chmod u+x gradlew && ./gradlew --info --stacktrace test
