@@ -1,5 +1,9 @@
 # Unidata Nexus Gradle Plugin
 
+This repository is no longer maintained and has been archived.
+
+----
+
 The `unidata-nexus-gradle` project is a Gradle plugin and associated tasks used to manage publishing to Raw Repositories on the Unidata Nexus server.
 The plugin can be applied using:
 
